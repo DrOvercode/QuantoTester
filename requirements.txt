@@ -1,35 +1,52 @@
 # =====================================================================================
-# Quanto Financial Intelligence Platform — Python dependencies
-# Install with:  python -m pip install -r requirements.txt
+# Quanto Financial Intelligence Platform
+# Python Dependencies
+# Install with:
+#     python -m pip install -r requirements.txt
 # =====================================================================================
 
-# ---- Core web framework -------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Web Framework
+# -----------------------------------------------------------------------------
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
-python-multipart==0.0.20      # required by FastAPI for File(...) / Form(...) uploads
-pydantic==2.13.4              # data models for the Enterprise Forecasting Engine (Section 9)
+starlette==0.41.3
+python-multipart==0.0.20
 
-# ---- Excel workbook generation -------------------------------------------------------
+# -----------------------------------------------------------------------------
+# AI Providers
+# -----------------------------------------------------------------------------
+openai==1.99.6
+anthropic==0.59.0
+google-generativeai==0.8.5
+google-genai==1.30.0
+ollama==0.5.3
+
+# -----------------------------------------------------------------------------
+# OCR & PDF Processing
+# -----------------------------------------------------------------------------
+pdfplumber==0.11.7
+pdf2image==1.17.0
+pytesseract==0.3.13
+Pillow==11.3.0
+
+# -----------------------------------------------------------------------------
+# Data Processing
+# -----------------------------------------------------------------------------
+numpy==2.3.2
 openpyxl==3.1.5
 
-# ---- AI Vision OCR providers (statement/ledger/forecast extraction) -----------------
-anthropic==0.42.0             # Claude Sonnet vision OCR (ANTHROPIC_API_KEY)
-google-genai==1.2.0           # Gemini vision OCR (GEMINI_API_KEY) — provides `from google import genai`
-openai==1.59.6                # GPT-4o vision OCR (OPENAI_API_KEY)
+# -----------------------------------------------------------------------------
+# Networking
+# -----------------------------------------------------------------------------
+httpx==0.28.1
 
-# ---- Local OCR fallback (used when no AI Vision API key is configured) --------------
-pdfplumber==0.11.4            # native PDF text extraction
-pytesseract==0.3.13           # Tesseract OCR wrapper for scanned PDFs/images
-pillow==11.1.0                # image loading/processing (PIL)
-pdf2image==1.17.0             # renders PDF pages to images for vision-model OCR fallback
-                               # NOTE: pdf2image requires the "poppler" system binary:
-                               #   macOS:  brew install poppler
-                               #   Debian/Ubuntu: apt-get install poppler-utils
+# -----------------------------------------------------------------------------
+# Validation
+# -----------------------------------------------------------------------------
+pydantic==2.11.7
 
-# ---- Local narrative/insights engine -------------------------------------------------
-ollama==0.4.5                 # local Llama 3.1 client for AI insights/chat/narrative
-                               # NOTE: requires the Ollama daemon running separately
-                               # (`ollama serve`) with the model pulled, e.g. `ollama pull llama3.1`.
-                               # All Ollama-backed features have deterministic fallbacks
-                               # and will still work (with reduced commentary) if Ollama
-                               # is not installed or not running.
+# -----------------------------------------------------------------------------
+# Optional Utilities
+# -----------------------------------------------------------------------------
+python-dotenv==1.1.1
