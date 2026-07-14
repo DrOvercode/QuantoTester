@@ -1,0 +1,35 @@
+# =====================================================================================
+# Quanto Financial Intelligence Platform — Python dependencies
+# Install with:  python -m pip install -r requirements.txt
+# =====================================================================================
+
+# ---- Core web framework -------------------------------------------------------------
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20      # required by FastAPI for File(...) / Form(...) uploads
+pydantic==2.13.4              # data models for the Enterprise Forecasting Engine (Section 9)
+
+# ---- Excel workbook generation -------------------------------------------------------
+openpyxl==3.1.5
+
+# ---- AI Vision OCR providers (statement/ledger/forecast extraction) -----------------
+anthropic==0.42.0             # Claude Sonnet vision OCR (ANTHROPIC_API_KEY)
+google-genai==1.2.0           # Gemini vision OCR (GEMINI_API_KEY) — provides `from google import genai`
+openai==1.59.6                # GPT-4o vision OCR (OPENAI_API_KEY)
+
+# ---- Local OCR fallback (used when no AI Vision API key is configured) --------------
+pdfplumber==0.11.4            # native PDF text extraction
+pytesseract==0.3.13           # Tesseract OCR wrapper for scanned PDFs/images
+pillow==11.1.0                # image loading/processing (PIL)
+pdf2image==1.17.0             # renders PDF pages to images for vision-model OCR fallback
+                               # NOTE: pdf2image requires the "poppler" system binary:
+                               #   macOS:  brew install poppler
+                               #   Debian/Ubuntu: apt-get install poppler-utils
+
+# ---- Local narrative/insights engine -------------------------------------------------
+ollama==0.4.5                 # local Llama 3.1 client for AI insights/chat/narrative
+                               # NOTE: requires the Ollama daemon running separately
+                               # (`ollama serve`) with the model pulled, e.g. `ollama pull llama3.1`.
+                               # All Ollama-backed features have deterministic fallbacks
+                               # and will still work (with reduced commentary) if Ollama
+                               # is not installed or not running.
