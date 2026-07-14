@@ -26,7 +26,7 @@ ollama==0.5.3
 pdfplumber==0.11.7
 pdf2image==1.17.0
 pytesseract==0.3.13
-tesseract
+tesseract==5.5.2
 Pillow==11.3.0
 # -----------------------------------------------------------------------------
 # Data Processing
